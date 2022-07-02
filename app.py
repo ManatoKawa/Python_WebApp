@@ -1,4 +1,7 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
+from flask import request
+
+
 app = Flask(__name__)
 @app.route('/')
 def inex():
@@ -15,3 +18,11 @@ def test_request():
 @app.route('/exercise_request/<para>')
 def test_request1(para):
     return f'test_request:{para}'
+
+@app.route('/try_html')
+def try_html():
+    return render_template("pri.html")
+
+@app.route('/show_data', methods=["GET", "POST"])
+def show_data():
+    return request.form
